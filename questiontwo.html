@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+      .error {background-color: white;
+        color:RED;
+      }
+    </style>
+    <style>
+      body{
+        background-color: aquamarine;
+      }
+    </style>
+
+    <h1>Numeric Input Validation </h1>
+    <form id="myForm">
+      <label for="numericInput">Numeric Input:</label>
+      <input type="text" id="numericInput" name="numericInput" required>
+      <span id="errorText" class="error"></span><br><br>
+
+      <input type="submit" value="Submit">
+    </form>
+
+    <script>
+      document.getElementById("myForm").addEventListener("submit", function(event) {
+        var numericInput = document.getElementById("numericInput").value;
+        var errorText = document.getElementById("errorText");
+
+        var isNumeric = /^\d+$/.test(numericInput);
+
+        if (!isNumeric) {
+          errorText.textContent = "Please enter a valid number";
+          event.preventDefault();
+        } else {
+          errorText.textContent = "";
+        }
+      });
+    </script>
+</body>
+</html>
